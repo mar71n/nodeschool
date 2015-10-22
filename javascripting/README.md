@@ -52,6 +52,11 @@ Check to see if your program is correct by running this command:
 
 ```## javascripting verify variables.js```
 
+``` javascript
+var example;
+example = 'some string';
+console.log(example);
+```
 -------------------
 # STRINGS
 
@@ -75,7 +80,10 @@ Use ```console.log``` to print the variable ```someString``` to the terminal.
 Check to see if your program is correct by running this command:
 
 ```javascripting verify strings.js```
-
+``` javascript
+var sameString = 'this is a string';
+console.log(sameString);
+```
 -------------------
 # STRING LENGTH
 
@@ -97,7 +105,10 @@ Use ```console.log``` to print the ```length``` of the string to the terminal.
 Check to see if your program is correct by running this command:
 
 ```javascripting verify string-length.js```
-
+``` javascript
+var example = 'example string';
+console.log(example.length);
+```
 -------------------
 # REVISING STRINGS
 
@@ -124,7 +135,11 @@ Use ```console.log()``` to print the results of the ```.replace()``` method to t
 Check to see if your program is correct by running this command:
 
 ```javascripting verify revising-strings.js```
-
+``` javascript
+var pizza = "pizza is alrigth";
+resultado = pizza.replace("alrigth", "wonderful");
+console.log(resultado);
+```
 -------------------
 # NUMBERS
 
@@ -139,7 +154,10 @@ Use ```console.log()``` to print that number to the terminal.
 Check to see if your program is correct by running this command:
 
 ```javascripting verify numbers.js```
-
+``` javascript
+var example = 123456789;
+console.log(example);
+```
 -------------------
 # ROUNDING NUMBERS
 
@@ -163,7 +181,11 @@ Use ```console.log()``` to print that number to the terminal.
 Check to see if your program is correct by running this command:
 
 ```javascripting verify rounding-numbers.js```
-
+``` javascript
+var roundUp = 1.5;
+var rounded = Math.round(roundUp);
+console.log(rounded);
+```
 -------------------
 # NUMBER TO STRING
 
@@ -184,7 +206,10 @@ Use ```console.log()``` to print the results of the ```.toString()``` method to 
 Check to see if your program is correct by running this command:
 
 ```javascripting verify number-to-string.js```
-
+``` javascript
+var n = 128;
+console.log(n.toString());
+```
 -------------------
 # IF STATEMENT
 
@@ -212,7 +237,14 @@ Print ```The fruit name has five characters or less.``` otherwise.
 Check to see if your program is correct by running this command:
 
 ```javascripting verify if-statement.js```
-
+``` javascript
+var fruit = 'orange';
+if (fruit.length > 5) {
+    console.log('The fruit name has more than five characters.');
+} else {
+    console.log('The fruit name has five characters or less.');
+}
+```
 -------------------
 # FOR LOOPS
 
@@ -246,7 +278,14 @@ After the for loop, use ```console.log()``` to print the ```total``` variable to
 Check to see if your program is correct by running this command:
 
 ```javascripting verify for-loop.js```
-
+``` javascript
+var total = 0;
+var limit = 10;
+for (i = 0; i < limit; i++) {
+    total += i;
+}
+console.log(total);
+```
 -------------------
 # ARRAYS
 
@@ -265,7 +304,10 @@ Use ```console.log()``` to print the ```pizzaToppings``` array to the terminal.
 Check to see if your program is correct by running this command:
 
 ```javascripting verify arrays.js```
-
+``` javascript
+var pizzaToppings = ['tomato sauce','cheese','pepperoni'];
+console.log(pizzaToppings);
+```
 -------------------
 # ARRAY FILTERING
 
@@ -302,7 +344,15 @@ Use ```console.log()``` to print the ```filtered``` array to the terminal.
 Check to see if your program is correct by running this command:
 
 ```javascripting verify array-filtering.js```
-
+``` javascript
+var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var filtered = numbers.filter(
+    function evenNumbers(number) {
+        return number % 2 === 0;
+    }
+);
+console.log(filtered);
+```
 -------------------
 # LOOPING THROUGH ARRAYS
 
@@ -337,7 +387,13 @@ After the for loop, use ```console.log()``` to print the ```pets``` array to the
 Check to see if your program is correct by running this command:
 
 ```javascripting verify looping-through-arrays.js```
-
+``` javascript
+var pets = ['cat', 'dog', 'rat'];
+for (i=0; i < pets.length; i++) {
+    pets[i] = pets[i] + 's';
+}
+console.log(pets);
+```
 -------------------
 # OBJECTS
 
@@ -368,7 +424,14 @@ Use ```console.log()``` to print the ```pizza``` object to the terminal.
 Check to see if your program is correct by running this command:
 
 ```javascripting verify objects.js```
-
+``` javascript
+var pizza = {
+  toppings: ['cheese', 'sauce', 'pepperoni'],
+  crust: 'deep dish',
+  serves: 2
+}
+console.log(pizza);
+```
 -------------------
 # OBJECT PROPERTIES
 
@@ -409,7 +472,12 @@ Use ```console.log()``` to print the ```types``` property of the ```food``` obje
 Check to see if your program is correct by running this command:
 
 ```javascripting verify object-properties.js```
-
+``` javascript
+var food = {
+  types: 'only pizza'
+};
+console.log(food.types);
+```
 -------------------
 # FUNCTIONS
 
@@ -442,7 +510,12 @@ Inside of the parentheses of ```console.log()```, call the ```eat()``` function 
 Check to see if your program is correct by running this command:
 
 ```javascripting verify functions.js```
-
+``` javascript
+function eat(food){
+    return food + ' tasted really good.';
+}
+console.log(eat('bananas'));
+```
 -------------------
 # FUNCTION ARGUMENTS
 
@@ -472,3 +545,9 @@ After that, inside the parentheses of ```console.log()```, call the ```math()```
 Check to see if your program is correct by running this command:
 
 ```javascripting verify function-arguments.js```
+``` javascript
+function math(a, b, c){
+    return (b * c) + a;
+}
+console.log(math(53, 61, 67));
+```
