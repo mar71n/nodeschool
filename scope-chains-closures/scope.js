@@ -1,7 +1,9 @@
 function foo(){
-    var bar;
+    var bar = false;
     quux = 2;
     function zip(){
-        var quux = 3;
+        bar = true; 
+        var quux=3;
     }
+    return zip;
 }
