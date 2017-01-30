@@ -65,7 +65,10 @@ solution.
         and `eval`. These tend not to be used much, so we will ignore them.
  * [2]: This workshop will concentrate only on Lexical Scoping.
 
- # Scope Chains
+----
+----
+
+# Scope Chains
 
 ## Nesting
 
@@ -202,6 +205,8 @@ which itself contains one variable lexically scoped called `quux`
 Once complete, execute `$ADVENTURE_COMMAND verify <your-file.js>` to verify your
 solution.
 
+----
+----
 
 # Global Scope & Shadowing
 
@@ -318,3 +323,5 @@ value of `quux` inside `zip()`.
 Once complete, execute `$ADVENTURE_COMMAND verify <your-file.js>` to verify your
 solution.
 
+----
+----
