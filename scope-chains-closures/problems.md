@@ -345,5 +345,17 @@ Since we are returning the function `zip`, the reference to `bar` is maintained 
 
 This has interesting implications for memory, which we will cover in the next lesson.
 
+``` js
+function foo(){
+    var bar = false;
+    quux = 2;
+    function zip(){
+        bar = true;
+        var quux = 3;
+    }
+    return zip;
+}
+```
+
 ----
 ----
