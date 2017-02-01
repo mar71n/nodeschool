@@ -65,6 +65,12 @@ solution.
         and `eval`. These tend not to be used much, so we will ignore them.
  * [2]: This workshop will concentrate only on Lexical Scoping.
 
+``` js
+function foo(){
+    var bar;
+}
+```
+
 ----
 ----
 
@@ -204,6 +210,38 @@ which itself contains one variable lexically scoped called `quux`
 
 Once complete, execute `$ADVENTURE_COMMAND verify <your-file.js>` to verify your
 solution.
+
+----
+
+# Solution
+
+The scope chain you created now looks like this:
+
+```
+(global)
+    ↑
+    |
+  foo()
+ var bar
+    ↑
+    |
+   zip()
+ var quux
+```
+
+By following the arrows, we can see `zip()` has access to `var bar`, but not the
+other way around.
+
+----
+
+``` js
+function foo(){
+    var bar;
+    function zip(){
+        var quux;
+    }
+}
+```
 
 ----
 ----
