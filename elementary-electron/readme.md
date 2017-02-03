@@ -174,3 +174,73 @@ window.addEventListener('keydown', function (e) {
 Now if you run your app and hit `P` it should save `annotation.pdf` into your project folder.
 
 When you think you are done with this challenge, run `elementary-electron verify`
+
+----
+----
+
+package.json
+``` json
+{
+  "name": "elementary-electron",
+  "version": "1.0.0",
+  "description": "Imagen de toga",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cat-picture": "^5.1.2",
+    "lightning-image-poly": "0.0.10"
+  }
+}
+```
+
+index.html
+``` html
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id='visualization'>-</div>
+<script type="text/javascript" src="index.js"></script>
+  <h1>Hello World</h1>
+</body>
+</html>
+```
+
+app.js
+``` js
+var electron = require('electron')
+electron.app.on('ready', function () {
+  var mainWindow = new electron.BrowserWindow({width: 600, height: 800})
+  mainWindow.loadURL('file://' + __dirname + '/index.html')
+})
+```
+
+index.js
+``` js
+var picture = require('cat-picture')
+var src = picture.src
+picture.remove()
+var image = require('lightning-image-poly')
+var viz = new image('#visualization', null, [src], {hullAlgorithm: 'convex'})
+var remote = require('electron').remote
+var fs = require('fs')
+function save () {
+  remote.getCurrentWindow().webContents.printToPDF({
+    portrait: true
+  }, function (err, data) {
+    fs.writeFile('annotation.pdf', data, function (err) {
+      if (err) alert('error generating pdf! ' + err.message)
+      else alert('pdf saved!')
+    })
+  })
+}
+window.addEventListener('keydown', function (e) {
+    alert(e.keyCode);
+  if (e.keyCode == 80) save()
+})
+```
