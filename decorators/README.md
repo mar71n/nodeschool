@@ -10,7 +10,7 @@ https://javascript.info/call-apply-decorators#transparent-caching
 
 Si slow(x) es muy pesada, y además es estable (para un mismo valor regresa un mismo resultado), se puede cachear los resultados y si se consulta por el mismo, devolver el guardado en lugar de evaluar nuevamente la pesada slow(x)
 
-```
+``` JavaScript
 function slow(x) {
   // there can be a heavy CPU-intensive job here
   alert(`Called with ${x}`);
