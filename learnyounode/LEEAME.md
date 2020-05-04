@@ -151,3 +151,123 @@ Tienes 5 ejercicios por hacer.
     learnyounode run program.js
   » Para verificar su programa, ejecute: learnyounode verify program.js
   » Para más información, ejecute: learnyounode help
+
+# ¡Aprendiendo NODE.JS!  
+
+## MALABARES CON ASINCRONISMO (Ejercicio 9 de 13)  
+
+  Este ejercicio es similar al anterior puesto que debes usar http.get().  
+  Sin embargo, esta vez tu programa recibirá tres URLs como argumentos.  
+
+  Tu programa deberá imprimir el contenido de cada una de las URLs en  
+  consola en el mismo orden que fueron recibidos los argumentos. No deberás  
+  imprimir el largo, solo el contenido como String, pero debes respetar el  
+  orden de llegada de los argumentos.  
+
+ ─────────────────────────────────────────────────────────────────────────────  
+
+## PISTAS  
+
+  Como las llamadas a las URLs son asíncronas, es probable que no recibas  
+  las respuestas en orden por lo que no puedes imprimir las respuestas a  
+  medida que llegan.  
+
+  Tendrás que encolar los resultados y mantener un contador de cuántas  
+  peticiones han sido recibidas de modo que al llegar al final puedas  
+  imprimir los resultados.  
+
+  En la vida real, utilizar [`async`](https://www.npmjs.com/package/async) o  
+  [`run-parallel`](https://www.npmjs.com/package/run-parallel) facilitaria  
+  la continuación de los callbacks. Pero para el alcance de este ejercicio  
+  se debería realizar sin utilizarlo.  
+
+ ─────────────────────────────────────────────────────────────────────────────  
+
+   » Para ver estas instrucciones de nuevo, ejecute: learnyounode print  
+   » Para ejecutar su programa en un entorno de pruebas, ejecute:  
+     learnyounode run program.js  
+   » Para verificar su programa, ejecute: learnyounode verify program.js  
+   » Para más información, ejecute: learnyounode help  
+
+# ¡Aprendiendo NODE.JS!
+
+## MALABARES CON ASINCRONISMO (Ejercicio 9 de 13)
+
+
+Su resultado propuesto comparado con lo esperado:
+
+────────────────────────────────────────────────────────────────────────────────
+
+1.  ACTUAL:    "Built like a cleanskin how trent from punchy mongrel. Grab us a postie also as busy as a bottle-o. "
+1.  ESPERADO:  "Built like a cleanskin how trent from punchy mongrel. Grab us a postie also as busy as a bottle-o. "
+
+2.  ACTUAL:    "Gutful of ridgy-didge and you little ripper galah. As busy as a avos also flat out like a bounce. We're going chunder how built like a kindie. She'll be right cobber how get a dog up ya dag. "
+2.  ESPERADO:  "Gutful of ridgy-didge and you little ripper galah. As busy as a avos also flat out like a bounce. We're going chunder how built like a kindie. She'll be right cobber how get a dog up ya dag. "
+
+3.  ACTUAL:    "He hasn't got a brizzie bloody shazza got us some yobbo. Mad as a big smoke no dramas as busy as a dag. He hasn't got a damper how gutful of reckon. It'll be sleepout how you little ripper boozer. He's got a massive freckle my get a dog up ya fair go. "
+3.  ESPERADO:  "He hasn't got a brizzie bloody shazza got us some yobbo. Mad as a big smoke no dramas as busy as a dag. He hasn't got a damper how gutful of reckon. It'll be sleepout how you little ripper boozer. He's got a massive freckle my get a dog up ya fair go. "
+
+4.  ACTUAL:    ""
+4.  ESPERADO:  ""
+
+
+────────────────────────────────────────────────────────────────────────────────
+
+ ✓
+
+ El resultado concuerda con lo esperado
+
+
+# PASO
+
+ Su solución a MALABARES CON ASINCRONISMO pasó sin problemas!
+
+ Aquí está la solución oficial si desea comparar notas:
+
+─────────────────────────────────────────────────────────────────────────────
+```javascript
+    'use strict'
+    const http = require('http')
+    const bl = require('bl')
+    const results = []
+    let count = 0
+
+    function printResults () {
+      for (let i = 0; i < 3; i++) {
+        console.log(results[i])
+      }
+    }
+
+    function httpGet (index) {
+      http.get(process.argv[2 + index], function (response) {
+        response.pipe(bl(function (err, data) {
+          if (err) {
+            return console.error(err)
+          }
+
+          results[index] = data.toString()
+          count++
+
+          if (count === 3) {
+            printResults()
+          }
+        }))
+      })
+    }
+
+    for (let i = 0; i < 3; i++) {
+      httpGet(i)
+    }
+```
+─────────────────────────────────────────────────────────────────────────────
+ Tienes 4 ejercicios por hacer.
+
+ Escriba 'learnyounode' para mostrar el menú.
+
+─────────────────────────────────────────────────────────────────────────────
+
+  » Para ver estas instrucciones de nuevo, ejecute: learnyounode print
+  » Para ejecutar su programa en un entorno de pruebas, ejecute:
+    learnyounode run program.js
+  » Para verificar su programa, ejecute: learnyounode verify program.js
+  » Para más información, ejecute: learnyounode help
